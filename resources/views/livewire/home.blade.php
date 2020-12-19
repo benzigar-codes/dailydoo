@@ -44,7 +44,7 @@
 		</div>
 		{{-- All Tasks --}}
 		<div class="w-2/5 p-4">
-			<div class="bg-white p-4 space-y-4">
+			<div class="bg-white p-4 space-y-4 overflow-scroll">
 				@if(count($morningLearn) == 0 && count($morningWork) == 0 && count($afternoonLearn) == 0 && count($afternoonWork) == 0)
 					<p class="text-green-800 font-bold">No Record Till now</p>
 				@endif

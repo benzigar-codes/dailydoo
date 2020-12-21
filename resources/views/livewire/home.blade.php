@@ -1,6 +1,6 @@
 <div class="min-h-screen bg-green-800">
 	{{-- Navbar --}}
-	<div class="w-full bg-white p-5 flex
+	<div class="w-full bg-white p-5 xl:flex
 	 items-center justify-between">
 		<div class="flex space-x-4 items-center">
             <div class="h-8 w-8 text-green-800">
@@ -10,7 +10,7 @@
             </div>
             <h1 class="font-bold text-3xl text-green-800">DailyDoooo's</h1>
         </div>
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center justify-center space-x-4">
         	<p>{{auth()->user()->name}}</p>
         	<img class="h-10 w-10 object-cover rounded-full border-4 border-green-600" src="/storage/{{auth()->user()->image}}" alt="">
         	<a href="{{route("logout")}}" class="hover:text-green-600">
@@ -25,9 +25,9 @@
         	</a>
         </div>
 	</div>
-	<div class="flex">
+	<div class="flex flex-wrap">
 		{{-- Date --}}
-		<div class="w-1/5 p-4">
+		<div class="w-full xl:w-1/5 p-4">
 			<div class="bg-white p-5 space-y-3">
 				<div class="flex items-center space-x-2">
 					<div class="h-8 w-8 text-green-800">
@@ -37,13 +37,12 @@
     				</div>
     				<h1 class="font-bold text-xl text-green-900">{{\Carbon\Carbon::parse($dateDetermined)->toFormattedDateString()}}</h1>
 				</div>
-				<hr>
 				<p>Change the date</p>
 				<input type="date" wire:model="changeDate" name="date" id="date">
 			</div>
 		</div>
 		{{-- All Tasks --}}
-		<div class="w-2/5 p-4">
+		<div class="w-full xl:w-2/5 p-4">
 			<div class="bg-white p-4 space-y-4 overflow-scroll">
 				@if(count($morningLearn) == 0 && count($morningWork) == 0 && count($afternoonLearn) == 0 && count($afternoonWork) == 0)
 					<p class="text-green-800 font-bold">No Record Till now</p>
@@ -63,8 +62,8 @@
 						<div class="w-1/2 ml-10">
 							<h1 class="text-xl font-bold">Learn</h1>
 							@foreach($morningLearn as $morn)
-							<div class="flex animate__animated animate__fadeIn">
-								<p class="text-gray-800 flex">{{$morn->name}}
+							<div class="grid grid-cols-4 flex animate__animated animate__fadeIn">
+								<p class="col-span-3 text-gray-800 flex">{{$morn->name}}
 								</p>
 								<div wire:click="deleteDoo({{$morn->id}})" class="h-5 w-5 text-red-300 ml-2 hover:text-red-800">
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -79,8 +78,8 @@
 						<div class="w-1/2 border-l-4 pl-4">
 							<h1 class="text-xl font-bold">Work</h1>
 							@foreach($morningWork as $morn)
-							<div class="flex animate__animated animate__fadeIn">
-								<p class="text-gray-800 flex">{{$morn->name}}
+							<div class="grid grid-cols-4 flex animate__animated animate__fadeIn">
+								<p class="col-span-3 text-gray-800 flex">{{$morn->name}}
 								</p>
 								<div class="h-5 w-5 text-red-300 ml-2 hover:text-red-800">
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -110,8 +109,8 @@
 						<div class="w-1/2 ml-10">
 							<h1 class="text-xl font-bold">Learn</h1>
 							@foreach($afternoonLearn as $morn)
-							<div class="flex animate__animated animate__fadeIn">
-								<p class="text-gray-800 flex">{{$morn->name}}
+							<div class="grid grid-cols-4 flex animate__animated animate__fadeIn">
+								<p class="col-span-3 text-gray-800 flex">{{$morn->name}}
 								</p>
 								<div wire:click="deleteDoo({{$morn->id}})" class="h-5 w-5 text-red-300 ml-2 hover:text-red-800">
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -126,8 +125,8 @@
 						<div class="w-1/2 border-l-4 pl-4">
 							<h1 class="text-xl font-bold">Work</h1>
 							@foreach($afternoonWork as $morn)
-							<div class="flex animate__animated animate__fadeIn">
-								<p class="text-gray-800 flex">{{$morn->name}}
+							<div class="grid grid-cols-4 flex animate__animated animate__fadeIn">
+								<p class="col-span-3 text-gray-800 flex">{{$morn->name}}
 								</p>
 								<div wire:click="deleteDoo({{$morn->id}})" class="h-5 w-5 text-red-300 ml-2 hover:text-red-800">
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -144,7 +143,7 @@
 			</div>
 		</div>
 		{{-- Todos --}}
-		<div class="w-1/5 p-4">
+		<div class="w-full xl:w-1/5 p-4">
 			<div class="bg-white p-5 space-y-3">
 				<div class="flex items-center space-x-2">
 					<div class="h-8 w-8 text-green-800">
@@ -172,7 +171,7 @@
 			</div>
 		</div>
 		{{-- Insert Todooo --}}
-		<div class="w-1/5 p-4">
+		<div class="w-full xl:w-1/5 p-4">
 			<form wire:submit.prevent="addDoo()" class="bg-white p-5 space-y-3">
 				<div class="flex items-center space-x-2">
 					<div class="h-8 w-8 text-green-800">
